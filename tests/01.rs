@@ -9,4 +9,6 @@ fn add() {
     println!("{} + {} = {}", fp_2, fp_3, fp_2 + fp_3);
     println!("{} - {} = {}", fp_3, fp_2, fp_3 - fp_2);
     println!("{} * {} = {}", fp_2, fp_3, fp_2 * fp_3);
+    
+    assert_eq!(fp_2 + fp_2.half(), fp_3);
 }
