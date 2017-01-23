@@ -2,5 +2,5 @@
 name = "fp"
 version = "0.1.0"
 authors = ["Sebastian Köln <sebk@rynx.org>"]
-
-[dependencies]
+license = "MIT"
+description = "Fixed Point Types"
