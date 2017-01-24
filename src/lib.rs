@@ -11,7 +11,7 @@ const SIGN_MASK: u32 = 0x8000_0000;
 const INT_BITS: u8 = 24;
 const BIT_VALUE: f64 = 0.00390625;
 
-#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd)]
+#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Default)]
 pub struct F24P8 {
     bits: i32
 }
@@ -46,6 +46,13 @@ impl Mul for F24P8 {
     type Output = F24P8;
     fn mul(self, rhs: Self) -> Self {
         F24P8 { bits: (self.bits * rhs.bits) / FRACTION_VALUE }
+    }
+}
+
+impl Neg for F24P8 {
+    type Output = F24P8;
+    fn neg(self) -> Self::Output {
+        F24P8 { bits: -self.bits }
     }
 }
 
