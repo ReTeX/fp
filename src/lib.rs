@@ -65,7 +65,7 @@ macro_rules! impl_fixed_muldiv {
                 F24P8 { bits: (self as i32) * rhs.bits }
             }
         }
-        
+
         impl Div<$ty> for F24P8 {
             type Output = F24P8;
             fn div(self, rhs: $ty) -> Self::Output {
@@ -126,13 +126,12 @@ impl F24P8 {
     pub fn twice(self) -> F24P8 {
         F24P8 { bits: self.bits * 2 }
     }
+
     pub fn half(self) -> F24P8 {
         F24P8 { bits: self.bits / 2 }
     }
-    pub const fn from_int(i: i32) -> F24P8 {
-        F24P8 { bits: i * FRACTION_VALUE }
-    }
-    pub const fn from_float(f: f64) -> F24P8 {
-        F24P8 { bits: (f * FRACTION_VALUE as f64) as i32 }
+
+    pub fn from_raw(n: i32) -> F24P8 {
+        F24P8 { bits: n }
     }
 }
