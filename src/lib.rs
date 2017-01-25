@@ -66,6 +66,13 @@ impl Neg for F24P8 {
 macro_rules! impl_fixed_muldiv {
     ($($ty:ty),*) => (
         $(
+        impl Mul<$ty> for F24P8 {
+            type Output = F24P8;
+            fn mul(self, rhs: $ty) -> Self::Output {
+                F24P8 { bits: self.bits * (rhs as i32) }
+            }
+        }
+        
         impl Mul<F24P8> for $ty {
             type Output = F24P8;
             fn mul(self, rhs: F24P8) -> Self::Output {
@@ -141,3 +148,4 @@ impl F24P8 {
         F24P8 { bits: n }
     }
 }
+
