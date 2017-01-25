@@ -13,7 +13,7 @@ const BIT_VALUE: f64 = 0.00390625;
 
 #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Default)]
 pub struct F24P8 {
-    bits: i32
+    pub bits: i32
 }
 
 impl Add for F24P8 {
@@ -114,12 +114,11 @@ impl From<F24P8> for f64 {
 
 impl Display for F24P8 {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
-        write!(f, "{}.{:08}",
-            self.bits >> FRACTION_BITS,
-            (self.bits & FRACTION_MASK) * 100_000_000
-        )
+        write!(f, "{}",
+            self.bits >> FRACTION_BITS)
     }
 }
+
 impl Debug for F24P8 {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
         write!(f, "{:06x}.{:02x}",
