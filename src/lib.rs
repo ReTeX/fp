@@ -49,6 +49,13 @@ impl Mul for F24P8 {
     }
 }
 
+impl Div for F24P8 {
+    type Output = F24P8;
+    fn div(self, rhs: Self) -> Self::Output {
+        F24P8 { bits: (self.bits / rhs.bits) * FRACTION_VALUE }
+    }
+}
+
 impl Neg for F24P8 {
     type Output = F24P8;
     fn neg(self) -> Self::Output {
