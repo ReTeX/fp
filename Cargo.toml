@@ -13,6 +13,3 @@ default-features = false
 [dependencies.serde_derive]
 version = "1.0"
 default-features = false
-
-[dev-dependencies]
-bincode = "0.8"
