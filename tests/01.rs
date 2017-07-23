@@ -1,11 +1,5 @@
-#![feature(const_fn)]
-
 extern crate fp;
-
 use fp::F24P8;
-
-const TWO: F24P8 = F24P8::from_int(2);
-const PI: F24P8 = F24P8::from_float(::std::f64::consts::PI);
 
 #[test]
 fn add() {

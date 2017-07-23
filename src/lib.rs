@@ -1,5 +1,6 @@
 #![no_std]
-#![feature(const_fn)]
+#[macro_use]
+extern crate serde_derive;
 
 use core::ops::*;
 use core::fmt::{Formatter, Display, Debug, Error};
@@ -11,6 +12,7 @@ const SIGN_MASK: u32 = 0x8000_0000;
 const INT_BITS: u8 = 24;
 const BIT_VALUE: f64 = 0.00390625;
 
+#[derive(Serialize, Deserialize)]
 #[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Default)]
 pub struct F24P8 {
     pub bits: i32
@@ -72,7 +74,7 @@ macro_rules! impl_fixed_muldiv {
                 F24P8 { bits: self.bits * (rhs as i32) }
             }
         }
-        
+
         impl Mul<F24P8> for $ty {
             type Output = F24P8;
             fn mul(self, rhs: F24P8) -> Self::Output {
@@ -148,4 +150,3 @@ impl F24P8 {
         F24P8 { bits: n }
     }
 }
-
